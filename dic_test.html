@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vexflow multiple measures per staff</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="vexflow.js"></script>
+
+<style>
+
+canvas {
+    background: #EED;
+    border: 10px solid #DDDDCC;
+}
+
+#wrapper {
+    width: 768px;
+    margin:0px auto;
+    text-align: center;
+}
+
+</style>
+
+<script>
+
+$(document).ready(function() {
+
+    canvas = $("#score")[0];
+
+    var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
+    var ctx = renderer.getContext();
+   
+   
+
+    // measure 1
+    var staveMeasure1 = new Vex.Flow.Stave(10, 0, 300);
+    staveMeasure1.addClef("treble").setContext(ctx).draw();
+
+    var notesMeasure1 = [
+
+
+
+    new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "q" }),
+    new Vex.Flow.StaveNote({ keys: ["d/4"], duration: "q" }),
+    new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "qr" }),
+    new Vex.Flow.StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "q" })
+   
+
+    ];
+   
+    // Helper function to justify and draw a 4/4 voice
+    Vex.Flow.Formatter.FormatAndDraw(ctx, staveMeasure1, notesMeasure1);
+   
+   
+   
+    // measure 2 - juxtaposing second measure next to first measure
+    var staveMeasure2 = new Vex.Flow.Stave(staveMeasure1.width + staveMeasure1.x, 0, 400);
+    staveMeasure2.setContext(ctx).draw();
+   
+    var notesMeasure2_part1 = [
+   
+    new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "8" }),
+    new Vex.Flow.StaveNote({ keys: ["d/4"], duration: "8" }),
+    new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "8" }),
+    new Vex.Flow.StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "8" })
+   
+    ];
+   
+    var notesMeasure2_part2 = [
+   
+    new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "8" }),
+    new Vex.Flow.StaveNote({ keys: ["d/6"], duration: "8" }),
+    new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "8" }),
+    new Vex.Flow.StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "8" })
+   
+    ];
+   
+    // create the beams for 8th notes in 2nd measure
+    var beam1 = new Vex.Flow.Beam(notesMeasure2_part1);
+    var beam2 = new Vex.Flow.Beam(notesMeasure2_part2);
+   
+    var notesMeasure2 = notesMeasure2_part1.concat(notesMeasure2_part2);
+   
+    Vex.Flow.Formatter.FormatAndDraw(ctx, staveMeasure2, notesMeasure2);
+   
+    // Render beams
+    beam1.setContext(ctx).draw();
+    beam2.setContext(ctx).draw();
+
+
+
+});   
+
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <canvas id="score" height="300" width="1200"></canvas>
+    </div>
+</body>
+</html>
