@@ -72,52 +72,66 @@ class Sheet
 	constructor(clefnum=1, font="Times New Roman")
   {
   	this.SHEET_WIDTH=1220;
-    
-  	canvas = $("#score")[0];
-    this.renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
-    this.ctx = renderer.getContext();
+    this.clefnum=clefnum;
+  	const { Renderer } = Vex.Flow;
+    this.canvas = document.querySelector('#my-canvas');
+    this.renderer = new Vex.Flow.Renderer(this.canvas, Vex.Flow.Renderer.Backends.CANVAS);
+    this.ctx = this.renderer.getContext();
   	this.measures = [];
     this.noteset = [];
+    this.firstnote=true;
+    
+    var firstmeasure = new Vex.Flow.Stave(10, 3.14, 300);
+    var firstnotes=[new Note()];
     for(let i = 0; i < clefnum; i++) 
     {
-      this.measures.push([]);
-      this.noteset.push([]);
+      this.measures.push([firstmeasure]);
+      this.noteset.push([firstnotes]);
     }
+    
   }
   render()
   {
-  	for(let i = 0; i < clefnum; i++) 
+  	for(let i = 0; i < this.clefnum; i++) 
     {
-    	for(let j=0; j<this.measures.length; j++)
+    	for(let j=0; j<this.measures[i].length; j++)
       {
+      	this.measures[i][j].setContext(this.ctx).draw();
       	Vex.Flow.Formatter.FormatAndDraw(this.ctx, this.measures[i][j],this.noteset[i][j]);
       }
     }
   }
   
-  //Detecting and determining the position of a new measure
-  newMeasure(cleffnum,len=300,b=null)
+  //Detecting and determining the position of a new measure. If first measure, must include a clef.
+  newMeasure(cleffnum=0,len=300,clef=null, b=null)
   {
   	var staveMeasure;
-  	if(this.measures[cleffnum].length==0)
-    {
-    	staveMeasure = new Vex.Flow.Stave(10, 0, len);
-    }
-    else
-    {
-    	if(this.measures[cleffnum][this.measures[cleffnum].length-1].x>this.SHEET_WIDTH-len)
+    
+    if(this.measures[cleffnum][this.measures[cleffnum].length-1].x>this.SHEET_WIDTH-len)
     	staveMeasure = new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y+100*cleffnum, len);
+    else
+    	staveMeasure = new Vex.Flow.Stave(this.measures[cleffnum][this.measures[cleffnum].length-1].x+len, this.measures[cleffnum][this.measures[cleffnum].length-1].y, len);
+  	if(this.measures[cleffnum][0].y==3.14)
+    {
+      this.measures[cleffnum][0]=(new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y, len)).addClef(clef);
     }
-    this.measures[cleffnum].push(staveMeasure);
+    else if(clef)
+    	this.measures[cleffnum].push(staveMeasure.addClef(clef));
+    else
+      this.measures[cleffnum].push(staveMeasure);
   }
+
   //takes in the cleffnum, and an array of Note objects
-	newNoteSet(cleffnum,notes)
+	newNoteSet(cleffnum=0,notes=null)
   {
   	var notemeasure=[];
   	for(let i=0; i<notes.length; i++)
-    {
+    { 
     	notemeasure.push(notes[i].getNote())
     }
-    this.noteset[cleffnum].push(notemeasure);
+    if(this.firstnote)
+      {this.noteset[cleffnum][0]=notemeasure;this.firstnote=false}
+    else 
+      this.noteset[cleffnum].push(notemeasure);
   }
 }
