@@ -3,19 +3,16 @@
 <head>
 <title>Vexflow multiple measures per staff</title>
 
-<!--line 7 can be changed to 
-<script src="https://cdn.jsdelivr.net/gh/JrZmomo/imag@main/Sheet.js"></script>
-such that this does not require local location of Sheet.js
--->
 <script src="C:\Users\leela\Documents\CS 35L\Backend\Sheet.js"></script>
 <script src="vexflow.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
-<canvas id="my-canvas"></canvas>
+
+<canvas id="my-canvas"width="1220"></canvas>
 <style>
 
 #wrapper {
-    width: 768px;
+    width: 1220px;
     margin:0px auto;
     text-align: center;
 }
@@ -26,15 +23,13 @@ such that this does not require local location of Sheet.js
 
     
     var hope=new Sheet();
-    hope.newMeasure(0,300,"treble");
+    hope.newMeasure(0,300,"treble","Ab");
     hope.newNoteSet(0,[new Note([-1,2,3],"qhhh"),new Note([1,2,3],"qh"),new Note([-1,5,6],"whhh")])
+    hope.newMeasure(0,300);
+    hope.newNoteSet(0,[new Note([-1,2,3],"qhhh"),new Note([1,2,3],"qh"),new Note([-1,5,6],"w")],[new Marking("w","crescendo")])
     hope.render()
 
 </script>
 </head>
-<body>
-    <div id="wrapper">
-        <canvas id="score" height="300" width="1220"></canvas>
-    </div>
-</body>
+
 </html>
