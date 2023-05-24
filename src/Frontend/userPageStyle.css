@@ -42,6 +42,46 @@ body {
     cursor: pointer;
 }
 
-.hero .button {
-    padding: 12px 0;
+.button .change {
+  color: #dd5353;
+  font-size: 20px;
+  cursor: pointer;
+  trasition: transform 0.2s ease;
 }
+
+.button i:active {
+  transform: scale(0.9);
+}
+
+.groupy {
+  border: 2px solid #080808;
+  background: #E6E6FA;
+}
+
+.groupy .text-input {
+  display: flex;
+  
+}
+
+.text-input .from-text {
+  border-left: 0px solid #080808;
+  background: #E6E6FA;
+  width: 50%
+}
+
+.text-input .to-text {
+  border-left: 2px solid #080808;
+  background: #E6E6FA;
+  width: 50%
+}
+
+.text-input textarea {
+  resize: none;
+  height: 100px;
+  width: 100%
+  background: none;
+  border: none;
+  font-size: 18px;
+  padding: 10px 15px;
+}
+
