@@ -1,3 +1,4 @@
+
 function mod(n, m) {
   return ((n % m) + m) % m;
 }
@@ -66,6 +67,23 @@ class Note
     	return this.note;
     }
 }
+
+class Marking
+{
+// dur is a string, 
+    
+  	constructor(dur="q",type)
+    {
+      this.mark;
+      if(type=="crescendo")
+        {this.mark=new Vex.Flow.Crescendo({duration: dur});}
+    }
+    getMarking()
+    {
+    	return this.mark;
+    }
+}
+
 class Sheet 
 {
 	
@@ -80,7 +98,7 @@ class Sheet
   	this.measures = [];
     this.noteset = [];
     this.firstnote=true;
-    
+    this.firstmeasure=true;
     var firstmeasure = new Vex.Flow.Stave(10, 3.14, 300);
     var firstnotes=[new Note()];
     for(let i = 0; i < clefnum; i++) 
@@ -92,42 +110,63 @@ class Sheet
   }
   render()
   {
+    
   	for(let i = 0; i < this.clefnum; i++) 
     {
     	for(let j=0; j<this.measures[i].length; j++)
       {
       	this.measures[i][j].setContext(this.ctx).draw();
-      	Vex.Flow.Formatter.FormatAndDraw(this.ctx, this.measures[i][j],this.noteset[i][j]);
+      	Vex.Flow.Formatter.FormatAndDraw(this.ctx, this.measures[i][j],this.noteset[i][j],new Marking("q","crescendo"));
       }
     }
   }
   
   //Detecting and determining the position of a new measure. If first measure, must include a clef.
-  newMeasure(cleffnum=0,len=300,clef=null, b=null)
+  newMeasure(cleffnum=0,len=300,clef=null, keysig=null)
   {
   	var staveMeasure;
     
     if(this.measures[cleffnum][this.measures[cleffnum].length-1].x>this.SHEET_WIDTH-len)
     	staveMeasure = new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y+100*cleffnum, len);
+    else if(this.firstmeasure)
+      staveMeasure=new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y, len);
     else
-    	staveMeasure = new Vex.Flow.Stave(this.measures[cleffnum][this.measures[cleffnum].length-1].x+len, this.measures[cleffnum][this.measures[cleffnum].length-1].y, len);
-  	if(this.measures[cleffnum][0].y==3.14)
+    	{staveMeasure = new Vex.Flow.Stave(this.measures[cleffnum][this.measures[cleffnum].length-1].x+len, this.measures[cleffnum][this.measures[cleffnum].length-1].y, len);}
+    
+    if(keysig)
     {
-      this.measures[cleffnum][0]=(new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y, len)).addClef(clef);
+      
+      staveMeasure.addKeySignature(keysig);
+      
     }
-    else if(clef)
-    	this.measures[cleffnum].push(staveMeasure.addClef(clef));
+    if(clef)
+      staveMeasure.addClef(clef);
+    	
+    if(this.firstmeasure)
+    {
+      this.measures[cleffnum][0]=staveMeasure;
+      this.firstmeasure=false;
+      
+    }
     else
-      this.measures[cleffnum].push(staveMeasure);
+      {this.measures[cleffnum].push(staveMeasure);}
+    
   }
 
   //takes in the cleffnum, and an array of Note objects
-	newNoteSet(cleffnum=0,notes=null)
+	newNoteSet(cleffnum=0,notes=null,markings=null)
   {
   	var notemeasure=[];
   	for(let i=0; i<notes.length; i++)
     { 
     	notemeasure.push(notes[i].getNote())
+    }
+    if(markings)
+    {
+      for(let i=0; i<markings.length; i++)
+      {
+        notemeasure.push(markings[i].getMarking());
+      }
     }
     if(this.firstnote)
       {this.noteset[cleffnum][0]=notemeasure;this.firstnote=false}
