@@ -4,11 +4,15 @@
 <title>Vexflow multiple measures per staff</title>
 
 <script src="C:\Users\leela\Documents\CS 35L\Backend\Sheet.js"></script>
+<script src="https://unpkg.com/vexflow@3/releases/vexflow-min.js"></script>
+
 <script src="vexflow.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
 
-<canvas id="my-canvas"width="1220"></canvas>
+
+<canvas id="my-canvas"width="1220"height="4000"></canvas>
 <style>
 
 #wrapper {
@@ -21,14 +25,28 @@
 
 <script>
 
-    
-    var hope=new Sheet();
-    hope.newMeasure(0,300,"treble","Ab");
-    hope.newNoteSet(0,[new Note([-1,2,3],"qhhh"),new Note([1,2,3],"qh"),new Note([-1,5,6],"whhh")])
-    hope.newMeasure(0,300);
-    hope.newNoteSet(0,[new Note([-1,2,3],"qhhh"),new Note([1,2,3],"qh"),new Note([-1,5,6],"w")],[new Marking("w","crescendo")])
-    hope.render()
 
+    var hope=new Sheet(3);
+    hope.newMeasure(0,300,"treble","Ab","4/4");
+    hope.newNoteSet(0,[new Note([-1,2,3],"qh"),new Note([1,2,3],"qh",false,false,"#"),new Note([-1,5,6],"w")]);
+    hope.newMeasure(0,300);
+    hope.newNoteSet(0,[new Note([-1,2,3],"qhhh"),new Note([1],"qh",true),new Note([-1,5,6],"whhh")]);
+    hope.newMeasure(1,300);
+    hope.newNoteSet(1,null,[new Marking("w","crescendo")]);
+    hope.newMeasure(1,300);
+    hope.newNoteSet(1,null,[new Marking("w","decrescendo")]);
+    hope.newMeasure(1,300);
+    hope.newNoteSet(1,null,[new Marking("q","ffffffffff")]);
+    hope.newMeasure(2,300,"bass","Ab","4/4");
+    hope.newNoteSet(2,[new Note([3],"qh"),new Note([1],"qh"),new Note([-1,5,6],"w")]);
+    hope.newMeasure(2,300);
+    hope.newNoteSet(2,[new Note([3,-1,-9,5,6,7,9],"w")]);
+    hope.newMeasure(0,300);
+    hope.newNoteSet(0,[new Note([3,-1,-9,5,6,7,9],"w")]);
+    hope.newMeasure(2,300);
+    hope.newNoteSet(2,[new Note([-5,-4,-3,-2,-1,0,1,2,3,4,5,6],"qhh")]);
+    
+    hope.render([[0,0,0,1],[2,0,0,1]]);
 </script>
 </head>
 
