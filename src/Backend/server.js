@@ -1,5 +1,16 @@
 require('dotenv').config()
 
+const fs = require('fs');
+
+fs.mkdir('./generated', {recursive: true}, (err) => {
+    if(err) {
+        console.error('Error creating directory:', err)
+    } else {
+        console.log('Directory created successfully.');
+    }
+})
+
+
 const express = require("express")
 const app = express();
 const mongoose = require('mongoose')
@@ -12,8 +23,8 @@ db.once('open', () => console.log('Connected to Database'))
 
 app.use(express.json())
 
-const usersRouter = require('./routes/users')
-app.use('/users', usersRouter)
+const userRouter = require('./routes/users.js')
+app.use('/users', userRouter)
 
 
 app.listen(3000, () => console.log('Server has started'))
