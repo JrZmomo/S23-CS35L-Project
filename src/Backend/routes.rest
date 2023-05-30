@@ -2,4 +2,28 @@ GET http://localhost:3000/users
 
 ###
 
-GET http://localhost:3000/users/2001
+GET http://localhost:3000/users/6474f4421aadf6a6118548fe
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "User2",
+    "password": ""
+}
+
+
+###
+DELETE http://localhost:3000/users/6474f27be42ee36e7966450f
+
+
+###
+PATCH http://localhost:3000/users/6474fedb6ca6b5b9786ad907
+Content-Type: application/json
+
+{
+   "username": "Updated user1",
+   "password": "LIning1215"
+}
