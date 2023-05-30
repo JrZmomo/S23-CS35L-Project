@@ -14,6 +14,7 @@ Content-Type: application/json
     "password": ""
 }
 
+
 ###
 DELETE http://localhost:3000/users/6474f27be42ee36e7966450f
 

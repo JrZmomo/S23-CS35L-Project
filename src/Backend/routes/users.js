@@ -2,6 +2,7 @@ const express = require('express')
 const router =  express.Router()
 const User = require('../models/users')
 
+
 //Getting all
 router.get('/', async (req, res) => { 
     try {
@@ -51,10 +52,14 @@ router.patch('/:id', getUser, async (req, res) => {
 })
 
 //Deleting one
-router.delete('/:id', getUser, async (req,res) => {
-    res.json(res.user)
-})
-
+router.delete('/:id', getUser, async (req, res) => {
+    try {
+        await User.deleteOne({ _id: req.params.id });
+        res.json({ message: 'User deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
 
 //middleware function
