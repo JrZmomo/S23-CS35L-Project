@@ -16,11 +16,7 @@
     <script src="path/to/Sheet.js"></script>
 
     <script>
-function translateText() {
-    var inputText = document.getElementById("inputText").value;
-    var translatedText = inputText.replace(/\\ital\{(.*?)\}/g, "<i>$1</i>");
-    document.getElementById("outputText").innerHTML = translatedText;
-}
+
     // Rest of your script code
       
         var hope=new Sheet(3);
@@ -44,6 +40,14 @@ function translateText() {
         hope.newNoteSet(2,[new Note([-5,-4,-3,-2,-1,0,1,2,3,4,5,6],"qhh")]);
 
         hope.render([[0,0,0,1],[2,0,0,1]]);
+      
+      function translateText() {
+    var inputText = document.getElementById("inputText").value;
+    var translatedText = inputText.replace(/\\ital\{(.*?)\}/g, "<i>$1</i>").
+    replace(/\\bold\{(.*?)\}/g, "<b>$1</b>").
+    replace(/\\measure\{(.*?)\}/g, hope.render()); // here it does not display
+    document.getElementById("outputText").innerHTML = translatedText;
+}
     </script>
 </body>
 </html>
