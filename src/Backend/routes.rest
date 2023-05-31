@@ -1,29 +1,37 @@
-GET http://localhost:3000/users
+GET http://localhost:3000/files
 
 ###
 
-GET http://localhost:3000/users/6474f4421aadf6a6118548fe
+GET http://localhost:3000/files/File1
 
 ###
 
-POST http://localhost:3000/users
+POST http://localhost:3000/files
 Content-Type: application/json
 
 {
-    "username": "User2",
-    "password": ""
+    "filename": "File2",
+    "context": [
+        "This is Line1",
+        "This is Line2",
+        "This is Line3",
+        "This is Line4"
+    ]
 }
+###
+DELETE http://localhost:3000/files/File2
 
 
 ###
-DELETE http://localhost:3000/users/6474f27be42ee36e7966450f
-
-
-###
-PATCH http://localhost:3000/users/6474fedb6ca6b5b9786ad907
+PATCH http://localhost:3000/files/File2
 Content-Type: application/json
 
 {
-   "username": "Updated user1",
-   "password": "LIning1215"
+    "filename": "File5",
+    "context" : [
+        "This is Line1",
+        "This is Line2",
+        "This is Line3",
+        "This is Line4"
+    ]
 }
