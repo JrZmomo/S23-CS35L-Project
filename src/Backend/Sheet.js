@@ -163,6 +163,16 @@ class Sheet
       beamcontain[i].setContext(this.ctx).draw();
     }
   }
+  genPDF() //this must have corresponding package includes to work
+  {
+    var doc = new jsPDF();
+    var imageData = this.canvas.toDataURL('image/png');  
+    // Add the image data to the PDF
+    doc.addImage(imageData, 'JPEG', 10, 10, 190, 0);// Adjust the coordinates and dimensions as needed
+    // Save the PDF
+    doc.save('music_sheet.pdf');
+    
+  }
   //Detecting and determining the position of a new measure. If first measure, must include a clef.
   newMeasure(cleffnum=0,len=300,clef=null, keysig=null,timesig=null)
   {
