@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Sheet Music Example</title>
+    <title>Vexflow multiple measures per staff</title>
+    <style>
+        #wrapper {
+            width: 1220px;
+            margin: 0px auto;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Sheet Music Example</h1>
-     <label for="inputText">Enter text:</label><br>
-    <input type="text" id="inputText"><br><br>
-    <button onclick="translateText()">Translate</button><br><br>
-    <label for="outputText">Translated text:</label><br>
-    <div id="outputText"></div><br>
-    <canvas id="my-canvas"></canvas>
+    <label for="inputText">Enter text:</label><br />
+    <input type="text" id="inputText" /><br /><br />
+    <button onclick="translateText()">Translate</button><br /><br />
+    <label for="outputText">Translated text:</label><br />
+    <div id="outputText"></div><br />
+    <canvas id="my-canvas" width="1220" height="4000"></canvas>
 
-    <!-- Include Sheet.js file -->
-    <script src="path/to/Sheet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/JrZmomo/publicproj@main/Sheet.js"></script>
 
     <script>
-
-    // Rest of your script code
-      
-        var hope=new Sheet(3);
-        hope.newMeasure(0,300,"treble","Ab","4/4");
-        hope.newNoteSet(0,[new Note([-1,2,3],"qh"),new Note([1,2,3],"qh",false,false,"#"),new Note([-1,5,6],"w")]);
-        hope.newMeasure(0,300);
-        hope.newNoteSet(0,[new Note([-1,2,3],"qhhh"),new Note([1],"qh",true),new Note([-1,5,6],"whhh")]);
-        hope.newMeasure(1,300);
-        hope.newNoteSet(1,null,[new Marking("w","crescendo")]);
-        hope.newMeasure(1,300);
-        hope.newNoteSet(1,null,[new Marking("w","decrescendo")]);
-        hope.newMeasure(1,300);
-        hope.newNoteSet(1,null,[new Marking("q","ffffffffff")]);
-        hope.newMeasure(2,300,"bass","Ab","4/4");
-        hope.newNoteSet(2,[new Note([3],"qh"),new Note([1],"qh"),new Note([-1,5,6],"w")]);
-        hope.newMeasure(2,300);
-        hope.newNoteSet(2,[new Note([3,-1,-9,5,6,7,9],"w")]);
-        hope.newMeasure(0,300);
-        hope.newNoteSet(0,[new Note([3,-1,-9,5,6,7,9],"w")]);
-        hope.newMeasure(2,300);
-        hope.newNoteSet(2,[new Note([-5,-4,-3,-2,-1,0,1,2,3,4,5,6],"qhh")]);
-
-        hope.render([[0,0,0,1],[2,0,0,1]]);
-      
-      function translateText() {
-    var inputText = document.getElementById("inputText").value;
-    var translatedText = inputText.replace(/\\ital\{(.*?)\}/g, "<i>$1</i>").
-    replace(/\\bold\{(.*?)\}/g, "<b>$1</b>").
-    replace(/\\measure\{(.*?)\}/g, hope.render()); // here it does not display
-    document.getElementById("outputText").innerHTML = translatedText;
-}
+        var hope = new Sheet();
+        //hope.newMeasure(0, 300, "treble");
+        //   hope.newNoteSet(0, [
+        //     new Note([-1, 2, 3], "qhhh"),
+        //     new Note([1, 2, 3], "qh"),
+        //     new Note([-1, 5, 6], "whhh"),
+        //   ]);
+        //hope.render();
     </script>
 </body>
+
+<script>
+    function translateText() {
+        var inputText = document.getElementById("inputText").value;
+        var translatedText = inputText.replace(/\\ital\{(.*?)\}/g, "<i>$1</i>").replace(/\\bold\{(.*?)\}/g, "<b>$1</b>");
+        var measureRegex = /\\measure\{(\d+),\s*(\d+),\s*"(\w+)"\}/;
+        var match = measureRegex.exec(inputText);
+        if (match) {
+            var measureNumber = parseInt(match[1]);
+            var width = parseInt(match[2]);
+            var clef = match[3];
+            hope.newMeasure(measureNumber, width, clef);
+            hope.render();
+        }
+
+    }
+</script>
+
 </html>
