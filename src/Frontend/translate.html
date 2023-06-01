@@ -11,12 +11,14 @@
         }
     </style>
 </head>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <body>
     <h1>Sheet Music Example</h1>
     <label for="inputText">Enter text:</label><br />
     <input type="text" id="inputText" /><br /><br />
     <button onclick="translateText()">Translate</button><br /><br />
+    <button onclick="hope.genPDF()">Generate PDF</button>
     <label for="outputText">Translated text:</label><br />
     <div id="outputText"></div><br />
     <canvas id="my-canvas" width="1220" height="4000"></canvas>
