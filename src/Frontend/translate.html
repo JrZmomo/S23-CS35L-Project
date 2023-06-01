@@ -27,6 +27,7 @@
 
     <script>
         var hope = new Sheet();
+        //hope.newMeasure(cleffnum=3,len=300,clef=null, keysig=null,timesig=null);
         //hope.newMeasure(0, 300, "treble");
         //   hope.newNoteSet(0, [
         //     new Note([-1, 2, 3], "qhhh"),
@@ -44,12 +45,13 @@
         var measureRegex = /\\measure\{(\d+),\s*(\d+),\s*"(\w+)"\}/;
         var match = measureRegex.exec(inputText);
         if (match) {
-            var measureNumber = parseInt(match[1]);
-            var width = parseInt(match[2]);
+            var cleffnum = parseInt(match[1]);
+            var len = parseInt(match[2]);
             var clef = match[3];
-            hope.newMeasure(measureNumber, width, clef);
+            hope.newMeasure(cleffnum, len, clef);
             hope.render();
         }
+        
 
     }
 </script>
