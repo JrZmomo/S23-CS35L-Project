@@ -1,64 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head>
-    <title>Vexflow multiple measures per staff</title>
-    <style>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sheet Music Example</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Sheet Music Example</h1>
+    </header>
+
+    <main>
+
+      <label for="inputText">Enter text:</label>
+      <br>
+      <textarea id="InputText" rows="20" cols="100"></textarea>
+
+
+
+      <br><br>
+      <input type="button" value="Translate">
+      <br><br>
+
+
+
+      <script src="https://cdn.jsdelivr.net/gh/Jackiexxxx/ProjectCS35L@main/sheet.js"></script>
+      <script src="vexflow.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
+      
+
+      <!-- <script src="Translate.js"></script> -->
+
+      <script src="https://cdn.jsdelivr.net/gh/Jackiexxxx/ProjectCS35L@main/translate.js"></script>
+
+
+      <label for="outputText">Translated text:</label>
+      <br>
+      <canvas id="my-canvas" width="1220" height="4000"></canvas>
+      <style>
         #wrapper {
-            width: 1220px;
-            margin: 0px auto;
-            text-align: center;
+          width: 1220px;
+          margin: 0px auto;
+          text-align: center;
         }
-    </style>
-</head>
 
-<body>
-    <h1>Sheet Music Example</h1>
-    <label for="inputText">Enter text:</label><br />
-    <input type="text" id="inputText" /><br /><br />
-    <button onclick="translateText()">Translate</button><br /><br />
-    <button onclick="hope.genPDF()">Generate PDF</button>
-    <label for="outputText">Translated text:</label><br />
-    <div id="outputText"></div><br />
-    <canvas id="my-canvas" width="1220" height="4000"></canvas>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
-    <!-- <script src="C:\Users\Zhang\Desktop\UCLA\CS 35L\project\translate_page\Sheet.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/gh/JrZmomo/S23-CS35L-Project@main/src/Backend/Sheet.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script>
-        var hope = new Sheet(3);
-        //hope.newMeasure(cleffnum=3,len=300,clef=null, keysig=null,timesig=null);
-        //hope.newMeasure(0, 300, "treble");
-        //   hope.newNoteSet(0, [
-        //     new Note([-1, 2, 3], "qhhh"),
-        //     new Note([1, 2, 3], "qh"),
-        //     new Note([-1, 5, 6], "whhh"),
-        //   ]);
-        //hope.render();
-    </script>
-</body>
-
-<script>
-    function translateText() {
-        var inputText = document.getElementById("inputText").value;
-        var translatedText = inputText.replace(/\\ital\{(.*?)\}/g, "<i>$1</i>").replace(/\\bold\{(.*?)\}/g, "<b>$1</b>");
-        var measureRegex = /\\measure\{(\d+),\s*(\d+),\s*"(\w+)"\}/;
-        var match = measureRegex.exec(inputText);
-        if (match) {
-            var cleffnum = parseInt(match[1]);
-            var len = parseInt(match[2]);
-            var clef = match[3];
-            hope.newMeasure(cleffnum, len, clef);
-            hope.render();
-        }
-        document.getElementById("outputText").innerHTML = translatedText;
+      </style>
+    </main>
+    <footer>
+      <hr>
+      <small>&copy; 1B, 2023</small>
+    </footer>
 
 
-    }
-</script>
+  </body>
 
 </html>
+
