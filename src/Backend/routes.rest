@@ -19,7 +19,7 @@ Content-Type: application/json
     ]
 }
 ###
-DELETE http://localhost:3000/files/File2
+DELETE http://localhost:3000/files/example.txt
 
 
 ###

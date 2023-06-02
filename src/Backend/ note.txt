@@ -9,4 +9,4 @@ Or follow the direction on the https://www.mongodb.com/try/download/community
 
 
 
-2. Run the following command in the termina 
+2. Run the following command in the terminal
