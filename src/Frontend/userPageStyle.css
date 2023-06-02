@@ -31,7 +31,12 @@ display: inline-block;
 }
 
 .hero p {
-  font-size: 13px;
+  font-size: 17px;
+  padding: 14px;
+  border: none;
+  background: #181818;
+  border-radius: 100px;
+  color: #fff;
 }
 
 .hero dropdown {
