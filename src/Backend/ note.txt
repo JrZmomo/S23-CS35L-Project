@@ -1,8 +1,12 @@
 This file is for communicating between backend and frontend.
 
 1. First of all, you need to make sure you have mongodb installed on your device.
-installation website: https://www.mongodb.com/
+installation website: https://www.mongodb.com/try/download/community
 
 after installation, we need to start the mongodb:
 command: 'mongod' or 'sudo service mongod start'
+Or follow the direction on the https://www.mongodb.com/try/download/community
 
+
+
+2. Run the following command in the termina 
