@@ -182,7 +182,7 @@ class Sheet
     var firstmeasure=false;
     if(this.measures[cleffnum][this.measures[cleffnum].length-1].x>this.SHEET_WIDTH-len)
     	staveMeasure = new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y
-        +100*Math.ceil(this.cleffnum/2), len);
+        +100*Math.ceil(this.clefnum/2), len);
     else if(this.measures[cleffnum][0].y==3.14)
       {staveMeasure=new Vex.Flow.Stave(10, Math.ceil(cleffnum/2)*100, len);firstmeasure=true;}
     else
