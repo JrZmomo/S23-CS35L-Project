@@ -11,8 +11,7 @@
         }
     </style>
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <body>
     <h1>Sheet Music Example</h1>
     <label for="inputText">Enter text:</label><br />
@@ -25,7 +24,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/JrZmomo/publicproj@main/Sheet.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/JrZmomo/S23-CS35L-Project@main/src/Backend/Sheet.js"></script>
+    <!-- <script src="C:\Users\Zhang\Desktop\UCLA\CS 35L\project\translate_page\Sheet.js"></script> --> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 
     <script>
         var hope = new Sheet();
@@ -53,9 +57,8 @@
             hope.newMeasure(cleffnum, len, clef);
             hope.render();
         }
-        
+
 
     }
 </script>
-
 </html>
