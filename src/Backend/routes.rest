@@ -2,7 +2,7 @@ GET http://localhost:3000/files
 
 ###
 
-GET http://localhost:3000/files/File1
+GET http://localhost:3000/files/File2
 
 ###
 
