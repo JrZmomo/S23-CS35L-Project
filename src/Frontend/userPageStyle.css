@@ -37,6 +37,7 @@ display: inline-block;
   background: #181818;
   border-radius: 100px;
   color: #fff;
+  margin-top: 9px;
 }
 
 .hero dropdown {
