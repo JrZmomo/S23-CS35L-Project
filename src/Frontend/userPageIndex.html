@@ -2,18 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoteLord</title>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>    
+    
+</head>
 <body>
     <div class="hero">
+        <div class="dropdown">
+            <button>YOUR FILES </button>
+            <div id="myDropdown" class="dropdown-content">
+                 <a href="translated_file1.html">File 1</a>
+                <a href="translated_file2.html">File 2</a>
+                <a href="translated_file3.html">File 3</a>
+            </div>
+        </div>
+      
         <button>TRANSLATE</button>
-        <ul class="button">
-          <li class="change"><i class="fas fa-exchange-alt"></i></li>
-        </ul> 
       
         <div class="groupy">
             <div class="text-input">
@@ -21,12 +28,9 @@
                 <textarea spellcheck="false" readonly disabled class="to-text" placeholder="Translation"></textarea>
             </div>
         </div>
-        <p>Open in Translation - Feedback</p>
+        <p>NoteLord</p>
     </div>
-    
-    <!--
-    <script src="script.js"></script>
-    <script src="countries.js"></script>
--->
+
+   
 </body>
 </html>
