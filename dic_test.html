@@ -31,10 +31,13 @@
     hope.newNoteSet(0,[new Note([-1,2,3],"qhhh"),new Note([1],"qh",true),new Note([-1,5,6],"whhh")]);
     hope.newMeasure(1,300);
     hope.newNoteSet(1,null,[new Marking("w","crescendo")]);
+    //\crescendo{w}
     hope.newMeasure(1,300);
     hope.newNoteSet(1,null,[new Marking("w","decrescendo")]);
+    //\decrescendo{w}
     hope.newMeasure(1,300);
     hope.newNoteSet(1,null,[new Marking("q","ffffffffff")]);
+    //\text{ffffffffff,q}
     hope.newMeasure(2,300,"bass","Ab","4/4");
     hope.newNoteSet(2,[new Note([3],"qh"),new Note([1],"qh"),new Note([-1,5,6],"w")]);
     hope.newMeasure(2,300);

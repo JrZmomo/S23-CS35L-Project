@@ -2,15 +2,16 @@ const textarea = document.getElementById("InputText");
 const btn = document.getElementsByTagName('input')[0];
 btn.addEventListener('click', translateText);
 
-
 function translateText() {
+
+    var canvas = document.querySelector('#my-canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     var textValue = textarea.value;
     var textarray = textValue.split("\n");
     console.log(textarray);
     var hope;
-
-
-
 
 
     for (let i=0; i<textarray.length; i++){
@@ -198,9 +199,9 @@ function key_measure(line,hope) {
 }
 
 
+function key_marking (line) {
 
 
-
-
+}
 
 
