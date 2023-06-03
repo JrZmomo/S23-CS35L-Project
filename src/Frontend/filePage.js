@@ -1,4 +1,4 @@
-
+/*
     // get all folders in our .directory-list
 	var allFolders = $(".directory-list li > ul");
 	allFolders.each(function() {
@@ -23,5 +23,5 @@
 	  });
 
 	});
-      
+*/  
 
