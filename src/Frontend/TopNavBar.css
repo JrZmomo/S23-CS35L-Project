@@ -1,3 +1,18 @@
+/*include the folloing line in <head>
+    <link rel="stylesheet" href="TopNavBar.css">
+*/
+/* Include the following code in <body> to have this navigation bar
+
+<div class="topnav">
+<a class="navbar-brand" href="/" aria-label="Notelord"></a>
+<a href="Home.html">Home</a>
+<a href="Filepage.html">Files</a>
+<a class="active" href="Glossary.html">Glossary</a>
+<a href="Translate.html">Translate</a> 
+
+only include class="active" onto respective page
+*/
+
 /* Add a purple background color to the top navigation */
 .topnav {
     background-color: #6d6dd6;
@@ -31,3 +46,4 @@
     line-height: 25px;
     color: white;
 }
+
