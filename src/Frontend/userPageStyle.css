@@ -22,6 +22,7 @@ body {
 color: black;
 display: inline-block;
 }
+
 .hero{
   max-width: 690px;
   width: 100%;
@@ -98,7 +99,7 @@ width: 50%
 .text-input textarea {
 resize: none;
 height: 100px;
-width: 100%
+width: 100%;
 background: none;
 border: none;
 font-size: 18px;
