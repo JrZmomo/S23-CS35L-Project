@@ -1,4 +1,7 @@
-/* Include the following to have this navigation bar
+/*include the folloing line in <head>
+    <link rel="stylesheet" href="Glossary.css">
+*/
+/* Include the following code in <body> to have this navigation bar
 
 <div class="topnav">
 <a class="navbar-brand" href="/" aria-label="Notelord"></a>
@@ -43,3 +46,4 @@ only include class="active" onto respective page
     line-height: 25px;
     color: white;
 }
+
