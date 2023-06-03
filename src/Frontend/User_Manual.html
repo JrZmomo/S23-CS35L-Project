@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sheet Music App User Manual</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: #6a5acd;
+        color: white;
+        padding: 20px;
+      }
+      .header h1 {
+        margin: 0;
+      }
+      .content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+      }
+      .content h2 {
+        color: #6a5acd;
+      }
+      .content p {
+        color: #808080;
+        line-height: 1.5;
+      }
+      .music-icon {
+        position: absolute;
+        font-size: 96px;
+        opacity: 0.1;
+        color: #6a5acd;
+      }
+      .music-icon.note {
+        top: -40px;
+        right: -40px;
+      }
+      .music-icon.clef {
+        bottom: -40px;
+        left: -40px;
+      }
+      ol.steps {
+        counter-reset: step-counter;
+        list-style-type: none;
+        padding-left: 0;
+      }
+      ol.steps li {
+        counter-increment: step-counter;
+        margin-bottom: 10px;
+      }
+      ol.steps li::before {
+        content: "Step " counter(step-counter) ": ";
+        font-weight: bold;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="header">
+      <h1>Sheet Music App User Manual</h1>
+    </div>
+    <div class="content">
+      <i class="fa fa-music music-icon note"></i>
+      <i class="fa fa-music music-icon clef"></i>
+      <h2>Getting Started</h2>
+      <p>Welcome to the NoteLord! This user manual will guide you through the features and
+        functionality of the app, as well as how to use our dictionary.</p>
+      <h2>Creating a New Score</h2>
+      <p>To create a new score, click on the "New Score" button on the home screen. This will open the score editor where you can add notes, rests, and other musical symbols to your score.</p>
+      <h2>Deleting a Score</h2>
+      <p>Press the delete button</p>
+      <h2>Our Dictionary</h2>
+      <p>The basis of our text-editing, sheet-music generating app is determined upon a custom dictionary
+        that gives our users the best experience, and greatest ease of generating a custom made music sheet.
+        </p>
+      <h2>Generating a Music Sheet Page</h2>
+      <ul class="steps">
+          <li><h3>Specify the Number of Clefs</h3>To generate a music sheet page, you must first specify the number of clefs your sheet music will have.
+             A normal piano sheet music may have either 2 or 3 clefs. Why? Well any dynamic markings placed in the middle between a 
+            treble and bass cleff also counts as a clef! So for those that wish to be expressive, remember to set clefs as 3. The syntax for this
+        command is <b>"\clefnum{in}"</b>, where in=3 if you want 3 clefs. Input may only be a positive number. </li>
+          <li><h3>Adding Measures</h3>After that, we may begin creating measures by adding notes and rests to each measure. The command
+        to create a measure is <b>"\measure{cleffnum=in1,clef=in2,keysig=in3,timesig=in4,<i>notes</i>}"</b>
+        <br><br> in1 is which clef you
+        would like to create the new measure on, indexed starting from 0 and must be a positive integer. 
+        <br><br></b>in2 specifies to display a clef
+        if you wish to, only acceptable inputs are 'treble', 'bass', 'tenor', and 'alto'. (Optional argument)
+        <br><br>in3 is the keysignature if you also 
+        wish to display on at the start of a measure, acctable inputs are 'a','b','c','d','e','f','g','A','B','C','D','E','F','G', 
+        'Ab','Bb','Cb','Db','Eb','Fb','Gb',' A#','B#','C#','D#','E#','F#','G#','a#','b#','c#','d#','e#','f#','g#'.(Optional argument)
+        <br><br>in4 specifies a time signature. Acceptable signatures can be is any number/any number. For example "4/4" is standard time.(Optional argument)
+        <br><br><i>notes</i> will be explained in next section. Notes can be any number of notes, as long as they are note types.     
+    </li>
+    <li><h3>Dynamics</h3>  <b>"\crescendo{i1}"</b> for a cresencdo of length i1, a positive integer.
+        <br><br><b>"\decrescendo{i1}"</b> for a decresencdo of length i1, a positive integer.
+        <br><br><b>"\text{i1}"</b> for any custom dynamic markings text i1. 
+             Thats all! Have fun! </li>
+      </ol>
+
+    </div>
+  </body>
+</html>
