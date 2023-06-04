@@ -1,5 +1,3 @@
-//in order to include this Sheet.js, use the following url:
-// https://cdn.jsdelivr.net/gh/JrZmomo/S23-CS35L-Project@main/src/Backend/Sheet.js
 
 function mod(n, m) {
   return ((n % m) + m) % m;
@@ -14,7 +12,7 @@ class Note
   	constructor(pos=[0], dur="q", rest=false, first=false, acc=null)
     {
       this.first=first;
-    	var collection=[]
+    	var collection=[];
       for(let i=0; i<pos.length; i++)
       {
         let n="";
@@ -90,7 +88,9 @@ class Marking
          else if(duration==0&&dur[i]=="h")
          	duration=2;
          else if(dur[i]=="h")
-         	duration*=2;
+         	{duration*=2;console.log("dd");}
+         else if(dur[i]=="d")
+          {duration+=duration/2;console.log("dd");}
       }
       if(type=="crescendo")
         {this.mark=new Vex.Flow.Crescendo({duration: duration});}
@@ -127,10 +127,6 @@ class Sheet
       this.measures.push([firstmeasure]);
       this.noteset.push([firstnotes]);
     }
-  }
-getclefnum()
-{
-    return this.clefnum;
   }
   render(beams=null)
   {
@@ -169,7 +165,11 @@ getclefnum()
       beamcontain[i].setContext(this.ctx).draw();
     }
   }
-  genPDF() //this must have corresponding package includes to work
+  getclefnum()
+{
+    return this.clefnum;
+  }
+  genPDF()
   {
     var doc = new jsPDF();
     var imageData = this.canvas.toDataURL('image/png');  
@@ -184,9 +184,10 @@ getclefnum()
   {
   	var staveMeasure;
     var firstmeasure=false;
-    if(this.measures[cleffnum][this.measures[cleffnum].length-1].x>this.SHEET_WIDTH-len)
-    	staveMeasure = new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y
-        +100*Math.ceil(this.clefnum/2), len);
+    
+    if(this.measures[cleffnum][this.measures[cleffnum].length-1].x+len>this.SHEET_WIDTH-len)
+    	{staveMeasure = new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y
+        +100*Math.ceil(this.clefnum/2), len);}
     else if(this.measures[cleffnum][0].y==3.14)
       {staveMeasure=new Vex.Flow.Stave(10, Math.ceil(cleffnum/2)*100+100, len);firstmeasure=true;}
     else
