@@ -1,4 +1,4 @@
-﻿\title{River Flows In You}
+\title{River Flows In You}
 \clefnum{3}
 
 
@@ -10,10 +10,6 @@
 
 
 \measure{cleffnum=1,\text{mp}}
-\measure{cleffnum=1}
-\measure{cleffnum=1}
-\measure{cleffnum=1}
-\measure{cleffnum=1}
 
 
 \measure{cleffnum=2,clef=treble,keysig=D,timesig=4/4,\beam{\note{2,qh},\note{6,qh}},\note{9,q},\beam{\note{0,qh},\note{4,qh}},\note{8,q}}
