@@ -128,6 +128,10 @@ class Sheet
       this.noteset.push([firstnotes]);
     }
   }
+getclefnum()
+{
+    return this.clefnum;
+  }
   render(beams=null)
   {
     var beamcontain=[];
