@@ -1,0 +1,30 @@
+body {
+    background: #eee;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 30px;
+  }
+
+h1 {
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+.content h2 {
+    color: #6a5acd;
+}
+
+.content p {
+    color: #808080;
+    line-height: 1.5;
+}
