@@ -32,6 +32,20 @@ function translateText() {
   for (let i = 0; i < textarray.length; i++) {
     var line = textarray[i];
     var key = getkey(line);
+    if (line.includes("title")) {
+      // console.log(" -> title + ", line);
+      var userInput = line;
+
+      var startIndex = userInput.indexOf("{") + 1;
+      var endIndex = userInput.lastIndexOf("}");
+      var extractedText = userInput.substring(startIndex, endIndex);
+
+      var title = extractedText;
+
+      ctx.font = '35px Times New Roman';
+      var textWidth = ctx.measureText(title).width;
+      ctx.fillText(title, (canvas.width - textWidth)/2, 30);
+    }
     if (line.includes("clefnum")) {
       hope = key_clefnum(line);
       for (let j = 0; j < hope.getclefnum(); j++){
@@ -40,19 +54,19 @@ function translateText() {
     }
     if (line.includes("measure")) {
       var temp = key_measure(line, hope);
-      console.log("---------here----------");
-      console.log(temp);
-      console.log("---temp^");
+      // console.log("---------here----------");
+      // console.log(temp);
+      // console.log("---temp^");
       if (temp.length > 1){
         for (let j = 1; j < temp.length; j++){
             temp[j][1] = measure_num[temp[0]];
-            console.log(i,temp[j]);
+            // console.log(i,temp[j]);
             beam_list.push(temp[j]);
         }
       }
-      console.log(beam_list);
+      // console.log(beam_list);
       measure_num[temp[0]] = measure_num[temp[0]] + 1;
-      console.log("-----------------------");
+      // console.log("-----------------------");
     }
   }
   hope.render(beam_list);
@@ -63,7 +77,7 @@ function translateText() {
 
 //function Return : get all key in this line
 function getkey(line) {
-  console.log(" -> getkey + ", line);
+  // console.log(" -> getkey + ", line);
   var keys = [];
   var temp = "";
   var is_start = false;
@@ -88,7 +102,7 @@ function getkey(line) {
 //function Input  : \text{"aaa"} or \crescendo{} or \decrescendo{}
 //function Return : new Sheet object
 function key_marking(line) {
-  console.log(" -> key_marking + ", line);
+  // console.log(" -> key_marking + ", line);
   var key = getkey(line);
   if (key[0] === "crescendo") {
     // console.log("Do - "+"new Marking("+"w"+","+"crescendo"+")");
@@ -110,7 +124,7 @@ function key_marking(line) {
 //function Input  : \clefnum{clefnum}
 //function Return : new Sheet object
 function key_clefnum(line) {
-  console.log(" -> key_clefnum + ", line);
+  // console.log(" -> key_clefnum + ", line);
   var userInput = line;
 
   var startIndex = userInput.indexOf("{") + 1;
@@ -123,7 +137,7 @@ function key_clefnum(line) {
 //function Input  : \note{[n1,n2,...],s,rest}
 //function Rerurn: new Note object
 function key_note(line) {
-  console.log(" -> key_note + ", line);
+  // console.log(" -> key_note + ", line);
   var userInput = line;
 
   var startIndex = userInput.indexOf("{") + 1;
@@ -175,14 +189,16 @@ function key_note(line) {
 //function Input  : \beam{\note{},\note{}}
 //function Rerurn: new Note object array
 function key_beams(line) {
-  console.log(" -> key_beams + ", line);
+  // console.log(" -> key_beams + ", line);
   var userInput = line;
   var startIndex = userInput.indexOf("{") + 1;
   var endIndex = userInput.lastIndexOf("}");
   var extractedText = userInput.substring(startIndex, endIndex);
   var extractedArray_note = extractedText.split(",\\");
-  for (let i  = 0; i < extractedArray_note.length; i ++){
+  if (extractedArray_note.length > 1) {
+    for (let i  = 1; i < extractedArray_note.length; i ++){
     extractedArray_note[i] = '\\'+extractedArray_note[i];
+  }
   }
 
   var note_array = [];
@@ -195,7 +211,7 @@ function key_beams(line) {
 }
 
 function key_measure(line, hope) {
-  console.log(" -> key_measure + ", line);
+  // console.log(" -> key_measure + ", line);
   var userInput = line;
 
   var startIndex = userInput.indexOf("{") + 1;
