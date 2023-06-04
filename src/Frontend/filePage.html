@@ -18,9 +18,9 @@
   <h2>Your Files</h2>
 
   <div class="box">
-    <ul class="directory-list" id="fileList"> <!-- Add an ID to the <ul> element -->
+    <ul class="directory-list" id="fileList"> 
       <li class="folder">Your files
-        <ul id="fileListItems"> <!-- Add an ID to the nested <ul> element -->
+        <ul id="fileListItems"> 
           
         </ul>
       </li>
@@ -28,15 +28,15 @@
   </div>
 
   <script>
-    fetch('http://localhost:3000/files') // Update the URL with your API endpoint
+    fetch('http://localhost:3000/files') 
       .then(response => response.json())
       .then(data => {
-        const fileListItems = document.getElementById('fileListItems'); // Get the <ul> element by ID
+        const fileListItems = document.getElementById('fileListItems'); 
         data.forEach(file => {
-          const listItem = document.createElement('li'); // Create a <li> element
-          listItem.className = 'file'; // Set the class for the <li> element
-          listItem.textContent = file.filename; // Set the filename as the text content
-          fileListItems.appendChild(listItem); // Append the <li> element to the <ul> element
+          const listItem = document.createElement('li'); 
+          listItem.className = 'file'; 
+          listItem.textContent = file.filename; 
+          fileListItems.appendChild(listItem);
         });
       })
       .catch(error => {
