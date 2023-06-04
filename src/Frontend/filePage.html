@@ -24,9 +24,9 @@
     <header>
       <h2>NOTELORD</h2>
         <div class="navigation">
-          <a href="#">Home</a>
-          <a href="#">Manual</a>
-          <a href="#">Translate</a>
+          <a href="splashScreen.html">Home</a>
+          <a href="User_Manual.html">Manual</a>
+          <a href="translate.html">Translate</a>
         </div>
         <label for="check">
             <i class="fas fa-bars menu-btn"></i>
@@ -37,10 +37,10 @@
         <div class="info">
 
           <h2>Your files<br><span>Access your files</span></h2>
-            <p>Open, save, and delete.</p>
-            <a href="#" class="info-btn">Open</a>
-            <a href="#" class="info-btn">Save</a>
-            <a href="#" class="info-btn">Delete</a>
+            <p>Open, new, and delete.</p>
+            <a href="#" class="info-btn open">Open</a>
+            <a href="translate.html" class="info-btn">New</a>
+            <a href="#" class="info-btn delete">Delete</a>
 
             <!--
             <div class="box">
@@ -58,22 +58,39 @@
       </ul>
     </div>
   </section>
-  
+
   <script>
-    fetch('http://localhost:3000/files') 
-      .then(response => response.json())
-      .then(data => {
-        const fileListItems = document.getElementById('fileListItems'); 
-        data.forEach(file => {
-          const listItem = document.createElement('li'); 
-          listItem.className = 'file'; 
-          listItem.textContent = file.filename; 
-          fileListItems.appendChild(listItem);
-        });
-      })
-      .catch(error => {
-        console.error('Error retrieving file list:', error);
-      });
+    // Function to open the pop-up window with the file list
+    function openFileListWindow() {
+      const popupUrl = 'file_List/fileList_open.html';
+      const popupWidth = 428;
+      const popupHeight = 174.797;
+      const left = (window.innerWidth - popupWidth) / 2;
+      const top = (window.innerHeight - popupHeight) / 2;
+      const popupOptions = `width=${popupWidth},height=${popupHeight},left=${left},top=${top},resizable,scrollbars=yes`;
+      window.open(popupUrl, '_blank', popupOptions);
+    }
+  
+    // Add event listener to the "Open" button
+    const openBtn = document.querySelector('.info-btn.open');
+    openBtn.addEventListener('click', openFileListWindow);
   </script>
+
+  <script>
+    function deleteFileListWindow() {
+      const popupUrl = 'file_List/fileList_delete.html';
+      const popupWidth = 440;
+      const popupHeight = 176.797;
+      const left = (window.innerWidth - popupWidth) / 2;
+      const top = (window.innerHeight - popupHeight) / 2;
+      const popupOptions = `width=${popupWidth},height=${popupHeight},left=${left},top=${top},resizable,scrollbars=yes`;
+      window.open(popupUrl, '_blank', popupOptions);
+    }
+    // Add event listener to the "Open" button
+      const deleteBtn = document.querySelector('.info-btn.delete');
+      deleteBtn.addEventListener('click', deleteFileListWindow);
+  </script>
+      
+  
 </body>
 </html>
