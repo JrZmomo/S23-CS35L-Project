@@ -188,7 +188,7 @@ getclefnum()
     	staveMeasure = new Vex.Flow.Stave(10, this.measures[cleffnum][this.measures[cleffnum].length-1].y
         +100*Math.ceil(this.clefnum/2), len);
     else if(this.measures[cleffnum][0].y==3.14)
-      {staveMeasure=new Vex.Flow.Stave(10, Math.ceil(cleffnum/2)*100, len);firstmeasure=true;}
+      {staveMeasure=new Vex.Flow.Stave(10, Math.ceil(cleffnum/2)*100+100, len);firstmeasure=true;}
     else
     	{staveMeasure = new Vex.Flow.Stave(this.measures[cleffnum][this.measures[cleffnum].length-1].x+
         len, this.measures[cleffnum][this.measures[cleffnum].length-1].y, len);}
