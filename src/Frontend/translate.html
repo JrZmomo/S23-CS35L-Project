@@ -4,9 +4,23 @@
   <head>
     <meta charset="UTF-8">
     <title>Sheet Music Example</title>
+    <link rel="stylesheet" href="TopNavBar.css">
   </head>
-
+<style>
+  body {
+    background: #eee;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 30px;
+  }
+</style>
   <body>
+      <div class="topnav">
+    <a class="navbar-brand" href="/" aria-label="Notelord"></a>
+    <a href="Home.html">Home</a>
+    <a href="Filepage.html">Files</a>
+    <a href="User_manual.html">Glossary</a>
+    <a class="active" href="Translate.html">Translate</a>
+  </div>
     <header>
       <h1>Sheet Music Example</h1>
     </header>
@@ -22,6 +36,10 @@
       <br><br>
       <input type="button" value="Translate">
       <br><br>
+      
+    <br><br>
+    <input type="button" value="Generate PDF" id="generatePDF">
+    <br><br>
 
 
       <script src="sheet.js"></script>
@@ -29,6 +47,8 @@
       <script src="vexflow.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       
       <script src="translate.js"></script>
 
