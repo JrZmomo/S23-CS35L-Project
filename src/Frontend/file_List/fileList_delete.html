@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File List</title>
+  <link rel="stylesheet" href="filePage.css">
+</head>
+<body>
+  <div class="box">
+    <ul class="directory-list" id="fileList"></ul>
+  </div>
+
+  <script>
+    fetch('http://localhost:3000/files') 
+      .then(response => response.json())
+      .then(data => {
+        const fileList = document.getElementById('fileList'); 
+        data.forEach(file => {
+          const listItem = document.createElement('li'); 
+          listItem.className = 'file'; 
+          
+          const link = document.createElement('a');
+          link.textContent = file.filename;
+          link.href = '#'; 
+
+          link.addEventListener('click', () => {
+            const confirmed = confirm(`Are you sure you want to delete ${file.filename}?`);
+            if (confirmed) {
+              fetch(`http://localhost:3000/files/${encodeURIComponent(file.filename)}`, {
+                method: 'DELETE'
+              })
+              .then(response => response.json())
+              .then(data => {
+                alert(data.message); // Show a success message to the user
+                window.location.reload(); // Refresh the page to update the file list
+              })
+              .catch(error => {
+                console.error('Error deleting file:', error);
+              });
+            }
+          });
+
+          listItem.appendChild(link);
+          fileList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error retrieving file list:', error);
+      });
+  </script>
+</body>
+</html>
