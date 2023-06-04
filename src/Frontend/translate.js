@@ -27,7 +27,7 @@ function translateText() {
   }
 
 
-  fetch('http://localhost:3001/files', {
+  fetch('http://localhost:3000/files', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
