@@ -16,23 +16,30 @@
       .then(response => response.json())
       .then(data => {
         const fileList = document.getElementById('fileList'); 
-        data.forEach(file => {
+        if (data.length === 0) {
           const listItem = document.createElement('li'); 
           listItem.className = 'file'; 
-          
-          const link = document.createElement('a');
-          link.textContent = file.filename;
-          link.href = `../translate.html?fileName=${encodeURIComponent(file.filename)}`;
-
-          link.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevents the default link navigation behavior
-            window.close(); // Closes the pop-up window
-            window.opener.location.href = link.href; // Opens translate.html in the original window
-          });
-
-          listItem.appendChild(link);
+          listItem.textContent = 'No existing file in the database. Please create a new one.';
           fileList.appendChild(listItem);
-        });
+        } else {
+          data.forEach(file => {
+            const listItem = document.createElement('li'); 
+            listItem.className = 'file'; 
+            
+            const link = document.createElement('a');
+            link.textContent = file.filename;
+            link.href = `../translate.html?fileName=${encodeURIComponent(file.filename)}`;
+
+            link.addEventListener('click', (event) => {
+              event.preventDefault(); // Prevents the default link navigation behavior
+              window.close(); // Closes the pop-up window
+              window.opener.location.href = link.href; // Opens translate.html in the original window
+            });
+
+            listItem.appendChild(link);
+            fileList.appendChild(listItem);
+          });
+        }
       })
       .catch(error => {
         console.error('Error retrieving file list:', error);
