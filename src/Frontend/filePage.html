@@ -7,34 +7,6 @@
 </head>
 
 <body>
-<<<<<<< Updated upstream
-    
-    
-    <div class="topnav">
-        <a class="navbar-brand" href="/" aria-label="Notelord"></a>
-        <a href="Home.html">Home</a>
-        <a class="active" href="Filepage.html">Files</a>
-        <a href="Glossary.html">Glossary</a>
-        <a href="Translate.html">Translate</a> 
-    </div>
-    
-    <h2>Your Files</h2>
-
-    <div class="box">
-        <ul class="directory-list">
-        
-          <li class="folder">Your files
-            <ul>
-               <li class="file">File 1</li>
-               <li class="file">File 2</li>
-               <li class="file">File 3</li>
-               <li class="file">File 4</li>
-              
-            </ul>
-          </li>
-        </ul>
-      </div>
-=======
   <div class="topnav">
     <a class="navbar-brand" href="/" aria-label="Notelord"></a>
     <a href="Home.html">Home</a>
@@ -42,14 +14,13 @@
     <a href="Glossary.html">Glossary</a>
     <a href="Translate.html">Translate</a> 
   </div>
->>>>>>> Stashed changes
 
   <h2>Your Files</h2>
 
   <div class="box">
-    <ul class="directory-list" id="fileList"> 
+    <ul class="directory-list" id="fileList"> <!-- Add an ID to the <ul> element -->
       <li class="folder">Your files
-        <ul id="fileListItems"> 
+        <ul id="fileListItems"> <!-- Add an ID to the nested <ul> element -->
           
         </ul>
       </li>
@@ -57,15 +28,15 @@
   </div>
 
   <script>
-    fetch('http://localhost:3000/files') 
+    fetch('http://localhost:3000/files') // Update the URL with your API endpoint
       .then(response => response.json())
       .then(data => {
-        const fileListItems = document.getElementById('fileListItems'); 
+        const fileListItems = document.getElementById('fileListItems'); // Get the <ul> element by ID
         data.forEach(file => {
-          const listItem = document.createElement('li'); 
-          listItem.className = 'file'; 
-          listItem.textContent = file.filename; 
-          fileListItems.appendChild(listItem); 
+          const listItem = document.createElement('li'); // Create a <li> element
+          listItem.className = 'file'; // Set the class for the <li> element
+          listItem.textContent = file.filename; // Set the filename as the text content
+          fileListItems.appendChild(listItem); // Append the <li> element to the <ul> element
         });
       })
       .catch(error => {
