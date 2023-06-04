@@ -10,7 +10,7 @@ const textarea = document.getElementById("InputText");
 const btn = document.getElementsByTagName('input')[0];
 btn.addEventListener('click', translateText);
 
-
+let currentFileName = null;
 
 function translateText() {
 
@@ -22,7 +22,25 @@ function translateText() {
   //get input and change to string array
   var textValue = textarea.value;
   var textarray = textValue.split("\n");
+  if (!currentFileName) {
+    currentFileName = window.prompt('Enter a name for your score:');
+  }
+
+
+  fetch('http://localhost:3001/files', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      filename: currentFileName,
+      context: textarray
+    })
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
   // console.log(textarray);
+
 
   var hope;
   var beam_list = [];
@@ -69,6 +87,11 @@ function translateText() {
       // console.log("-----------------------");
     }
   }
+  
+    const generatePDF = document.getElementById('generatePDF');
+  generatePDF.addEventListener('click', function () {
+    hope.genPDF();
+  });
   hope.render(beam_list);
 }
 
