@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sheet Music Example</title>
+  <link rel="stylesheet" href="TopNavBar.css">
+</head>
+<style>
+  body {
+    background: #eee;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 30px;
+  }
+</style>
+
+<body>
+  <div class="topnav">
+    <a class="navbar-brand" href="/" aria-label="Notelord"></a>
+    <a href="Home.html">Home</a>
+    <a href="Filepage.html">Files</a>
+    <a href="User_manual.html">Glossary</a>
+    <a class="active" href="Translate.html">Translate</a>
+  </div>
+  <header>
+    <h1>Sheet Music Example</h1>
+  </header>
+
+  <main>
+
+    <label for="inputText">Enter text:</label>
+    <br>
+    <textarea id="InputText" rows="20" cols="100"></textarea>
+
+
+
+    <br><br>
+    <input type="button" value="Translate">
+    <br><br>
+
+    <br><br>
+    <input type="button" value="Generate PDF" id="generatePDF">
+    <br><br>
+
+
+
+    <script src="sheet.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/Jackiexxxx/ProjectCS35L@main/sheet.js"></script> -->
+    <script src="vexflow.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <script src="translate.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/gh/Jackiexxxx/ProjectCS35L@main/translate.js"></script> -->
+
+
+    <label for="outputText">Translated text:</label>
+    <br>
+    <canvas id="my-canvas" width="1220" height="4000"></canvas>
+    <style>
+      #wrapper {
+        width: 1220px;
+        margin: 0px auto;
+        text-align: center;
+      }
+    </style>
+  </main>
+  <footer>
+    <hr>
+    <small>&copy; 1B, 2023</small>
+  </footer>
+
+
+</body>
+
+</html>
+
+
+<!-- \clefnum{2}
+\measure{cleffnum=0,clef=treble,keysig=D,timesig=4/4,\note{6,qh},\note{5,qh},\note{6,qh},\note{5,qh},\note{6,qh},\note{3,qh},\note{6,qh},\note{2,qh}}
+\measure{cleffnum=1,clef=bass,keysig=D,timesig=4/4,\note{2,qh},\note{6,qh},\note{9},\note{0,qh},\note{4,qh},\note{8}} -->
