@@ -44,27 +44,40 @@
             that gives our users the best experience, and greatest ease of generating a custom made music sheet.
           </p>
             <ul class="steps">
-              <li><h3>Specify the Number of Clefs</h3>To generate a music sheet page, you must first specify the number of clefs your sheet music will have.
-                   A normal piano sheet music may have either 2 or 3 clefs. Why? Well any dynamic markings placed in the middle between a 
-                  treble and bass cleff also counts as a clef! So for those that wish to be expressive, remember to set clefs as 3. The syntax for this
-              command is <b>"\clefnum{in}"</b>, where in=3 if you want 3 clefs. Input may only be a positive number. </li>
-                <li><h3>Adding Measures</h3>After that, we may begin creating measures by adding notes and rests to each measure. The command
+              <li><h3>Specify the Number of Clefs</h3>
+              <p>
+                <br>
+              To generate a music sheet page, you must first specify the number of clefs your sheet music will have.
+              A normal piano sheet music may have either 2 or 3 clefs. Why? Well any dynamic markings placed in the middle between a 
+              treble and bass cleff also counts as a clef! So for those that wish to be expressive, remember to set clefs as 3. 
+              The syntax for this command is <b>"\clefnum{in}"</b>, where in=3 if you want 3 clefs. Input may only be a positive number. </li>
+              </p>
+              
+              <li><h3>Adding Measures</h3>
+              <p>
+                <br>
+              After that, we may begin creating measures by adding notes and rests to each measure. The command
               to create a measure is <b>"\measure{cleffnum=in1,clef=in2,keysig=in3,timesig=in4,<i>notes</i>}"</b>
-              <br><br> in1 is which clef you
-              would like to create the new measure on, indexed starting from 0 and must be a positive integer. 
+              <br><br> in1 is which clef you would like to create the new measure on, indexed starting from 0 
+              and must be a positive integer. 
               <br><br></b>in2 specifies to display a clef
               if you wish to, only acceptable inputs are 'treble', 'bass', 'tenor', and 'alto'. (Optional argument)
               <br><br>in3 is the keysignature if you also 
               wish to display on at the start of a measure, acctable inputs are 'a','b','c','d','e','f','g','A','B','C','D','E','F','G', 
-              'Ab','Bb','Cb','Db','Eb','Fb','Gb',' A#','B#','C#','D#','E#','F#','G#','a#','b#','c#','d#','e#','f#','g#'.(Optional argument)
+              'Ab','Bb','Cb','Db','Eb','Fb','Gb',' A#','B#','C#','D#','E#',  'F#','G#','a#','b#','c#','d#','e#','f#','g#'.(Optional argument)
               <br><br>in4 specifies a time signature. Acceptable signatures can be is any number/any number. For example "4/4" is standard time.(Optional argument)
-              <br><br><i>notes</i> will be explained in next section. Notes can be any number of notes, as long as they are note types.     
-          </li>
-          <li><h3>Dynamics</h3>  <b>"\crescendo{i1}"</b> for a cresencdo of length i1, a positive integer.
-              <br><br><b>"\decrescendo{i1}"</b> for a decresencdo of length i1, a positive integer.
-              <br><br><b>"\text{i1}"</b> for any custom dynamic markings text i1. 
-                   Thats all! Have fun! </li>
-            </ol>
+              <br><br><i>notes</i> will be explained in next section. Notes can be any number of notes, as long as they are note types.
+              </p>    
+            </li>
+              <li><h3>Dynamics</h3>  
+              <p>
+                <br>
+                <b>"\crescendo{i1}"</b> for a cresencdo of length i1, a positive integer.
+                <br><br><b>"\decrescendo{i1}"</b> for a decresencdo of length i1, a positive integer.
+                <br><br><b>"\text{i1}"</b> for any custom dynamic markings text i1. 
+                     Thats all! Have fun! </li>
+              </p>
+              
 
     </div>
     
