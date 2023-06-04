@@ -1,32 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="filePage.css">
-  <link rel="stylesheet" href="TopNavBar.css">
   <script src="filePage.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Files Page</title>
 </head>
 
 <body>
-  <div class="topnav">
+  <!--
+<div class="topnav">
     <a class="navbar-brand" href="/" aria-label="Notelord"></a>
     <a href="Home.html">Home</a>
     <a class="active" href="Filepage.html">Files</a>
     <a href="Glossary.html">Glossary</a>
     <a href="Translate.html">Translate</a> 
   </div>
+  -->
+  <section>
+    <input type="checkbox" id="check">
+    <header>
+      <h2>NOTELORD</h2>
+        <div class="navigation">
+          <a href="#">Home</a>
+          <a href="#">Manual</a>
+          <a href="#">Translate</a>
+        </div>
+        <label for="check">
+            <i class="fas fa-bars menu-btn"></i>
+            <i class="fas fa-times close-btn"></i>
+        </label>
+    </header>
+    <div class="content">
+        <div class="info">
 
-  <h2>Your Files</h2>
+          <h2>Your files<br><span>Access your files</span></h2>
+            <p>Open, save, and delete.</p>
+            <a href="#" class="info-btn">Open</a>
+            <a href="#" class="info-btn">Save</a>
+            <a href="#" class="info-btn">Delete</a>
 
-  <div class="box">
-    <ul class="directory-list" id="fileList"> 
-      <li class="folder">Your files
-        <ul id="fileListItems"> 
-          
-        </ul>
-      </li>
-    </ul>
-  </div>
+            <!--
+            <div class="box">
+              <ul class="directory-list" id="fileList"> 
+                <li class="folder">Your files
+                  <ul id="fileListItems"> 
+        </div>
+            -->
 
+    </div>
+    
+            
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+  
   <script>
     fetch('http://localhost:3000/files') 
       .then(response => response.json())
