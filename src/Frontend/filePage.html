@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<<<<<<< Updated upstream
     
     
     <div class="topnav">
@@ -33,8 +34,43 @@
           </li>
         </ul>
       </div>
+=======
+  <div class="topnav">
+    <a class="navbar-brand" href="/" aria-label="Notelord"></a>
+    <a href="Home.html">Home</a>
+    <a class="active" href="Filepage.html">Files</a>
+    <a href="Glossary.html">Glossary</a>
+    <a href="Translate.html">Translate</a> 
+  </div>
+>>>>>>> Stashed changes
 
-      
+  <h2>Your Files</h2>
+
+  <div class="box">
+    <ul class="directory-list" id="fileList"> 
+      <li class="folder">Your files
+        <ul id="fileListItems"> 
+          
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    fetch('http://localhost:3000/files') 
+      .then(response => response.json())
+      .then(data => {
+        const fileListItems = document.getElementById('fileListItems'); 
+        data.forEach(file => {
+          const listItem = document.createElement('li'); 
+          listItem.className = 'file'; 
+          listItem.textContent = file.filename; 
+          fileListItems.appendChild(listItem); 
+        });
+      })
+      .catch(error => {
+        console.error('Error retrieving file list:', error);
+      });
+  </script>
 </body>
 </html>
-
