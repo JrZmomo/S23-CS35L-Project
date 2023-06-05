@@ -3,8 +3,6 @@
 // Use the fileName value as the currentFileName
 
 
-
-
 //Set EventListenr : 
 //textarea : input txt box
 //btn : translate button , will call translateText()
@@ -33,7 +31,6 @@ window.addEventListener('load', () => {
 
 let currentFileName = fileName;
 
-//let currentFileName = null;
 
 function translateText() {
 
@@ -46,11 +43,10 @@ function translateText() {
   var textValue = textarea.value;
   var textarray = textValue.split("\n");
   if (!currentFileName) {
+    // don't have a File 
     currentFileName = window.prompt('Enter a name for your score:');
-  }
-
-
-  fetch('http://localhost:3000/files', {
+    // send HTTP Post Request to create one
+    fetch('http://localhost:3000/files', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -62,7 +58,25 @@ function translateText() {
   })
     .then(response => response.json())
     .then(data => console.log(data))
-  // console.log(textarray);
+  } else {
+    // have the Filename
+    // send patch request to update the existing one
+    console.log(currentFileName)
+    fetch('http://localhost:3000/files/'+currentFileName, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        filename: currentFileName,
+        context: textarray
+      })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
+
+
 
 
   var hope;
