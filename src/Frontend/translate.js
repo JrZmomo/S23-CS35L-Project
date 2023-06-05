@@ -17,6 +17,7 @@ btn.addEventListener('click', translateText);
 //get filename as query parameter
 const url = new URL(window.location.href);
 const fileName = url.searchParams.get('fileName');
+//when opened, get testarray from server based on filename
 window.addEventListener('load', () => {
 
   
