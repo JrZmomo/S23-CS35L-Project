@@ -1,5 +1,7 @@
 //translate.js do the translate part
 
+// Use the fileName value as the currentFileName
+
 
 
 
@@ -7,10 +9,30 @@
 //textarea : input txt box
 //btn : translate button , will call translateText()
 const textarea = document.getElementById("InputText");
+
 const btn = document.getElementsByTagName('input')[0];
 btn.addEventListener('click', translateText);
 
-let currentFileName = null;
+
+//get filename as query parameter
+const url = new URL(window.location.href);
+const fileName = url.searchParams.get('fileName');
+window.addEventListener('load', () => {
+
+  
+  if (fileName === null) {
+   } else {
+    fetch(`http://localhost:3001/files/${fileName}`)
+    .then(response => response.json())
+    .then(data => {
+    textarea.value = data.context.join('\n');
+    });
+   }
+});
+
+let currentFileName = fileName;
+
+//let currentFileName = null;
 
 function translateText() {
 
@@ -62,11 +84,11 @@ function translateText() {
 
       ctx.font = '35px Times New Roman';
       var textWidth = ctx.measureText(title).width;
-      ctx.fillText(title, (canvas.width - textWidth)/2, 30);
+      ctx.fillText(title, (canvas.width - textWidth) / 2, 30);
     }
     if (line.includes("clefnum")) {
       hope = key_clefnum(line);
-      for (let j = 0; j < hope.getclefnum(); j++){
+      for (let j = 0; j < hope.getclefnum(); j++) {
         measure_num.push(0);
       }
     }
@@ -75,11 +97,11 @@ function translateText() {
       // console.log("---------here----------");
       // console.log(temp);
       // console.log("---temp^");
-      if (temp.length > 1){
-        for (let j = 1; j < temp.length; j++){
-            temp[j][1] = measure_num[temp[0]];
-            // console.log(i,temp[j]);
-            beam_list.push(temp[j]);
+      if (temp.length > 1) {
+        for (let j = 1; j < temp.length; j++) {
+          temp[j][1] = measure_num[temp[0]];
+          // console.log(i,temp[j]);
+          beam_list.push(temp[j]);
         }
       }
       // console.log(beam_list);
@@ -87,8 +109,8 @@ function translateText() {
       // console.log("-----------------------");
     }
   }
-  
-    const generatePDF = document.getElementById('generatePDF');
+
+  const generatePDF = document.getElementById('generatePDF');
   generatePDF.addEventListener('click', function () {
     hope.genPDF();
   });
@@ -219,9 +241,9 @@ function key_beams(line) {
   var extractedText = userInput.substring(startIndex, endIndex);
   var extractedArray_note = extractedText.split(",\\");
   if (extractedArray_note.length > 1) {
-    for (let i  = 1; i < extractedArray_note.length; i ++){
-    extractedArray_note[i] = '\\'+extractedArray_note[i];
-  }
+    for (let i = 1; i < extractedArray_note.length; i++) {
+      extractedArray_note[i] = '\\' + extractedArray_note[i];
+    }
   }
 
   var note_array = [];
