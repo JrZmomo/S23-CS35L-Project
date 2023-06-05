@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
   
   if (fileName === null) {
    } else {
-    fetch(`http://localhost:3001/files/${fileName}`)
+    fetch(`http://localhost:3000/files/${fileName}`)
     .then(response => response.json())
     .then(data => {
     textarea.value = data.context.join('\n');
