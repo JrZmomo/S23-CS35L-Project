@@ -112,7 +112,7 @@ class Sheet
 
 	constructor(clefnum=1, font="Times New Roman")
   {
-  	this.SHEET_WIDTH=720;
+  	this.SHEET_WIDTH=900;
     this.clefnum=clefnum;
   	const { Renderer } = Vex.Flow;
     this.canvas = document.querySelector('#my-canvas');
@@ -120,7 +120,7 @@ class Sheet
     this.ctx = this.renderer.getContext();
   	this.measures = [];
     this.noteset = [];
-    var firstmeasure = new Vex.Flow.Stave(10, 3.14, 250);
+    var firstmeasure = new Vex.Flow.Stave(10, 3.14, 270);
     var firstnotes=[new Note([0],'q',false,true)];
     for(let i = 0; i < clefnum; i++) 
     {
@@ -180,7 +180,7 @@ class Sheet
     
   }
   //Detecting and determining the position of a new measure. If first measure, must include a clef.
-  newMeasure(cleffnum=0,len=250,clef=null, keysig=null,timesig=null)
+  newMeasure(cleffnum=0,len=270,clef=null, keysig=null,timesig=null)
   {
   	var staveMeasure;
     var firstmeasure=false;
