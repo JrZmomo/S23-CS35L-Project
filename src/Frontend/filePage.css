@@ -102,7 +102,7 @@ header .navigation a:hover{
     letter-spacing: 2px;
     padding: 10px 10px 10px 10px;
     border-radius: 5px;
-
+    max-width: 400px;
     transition: 0.3s;
     transition-property: background;
     margin-bottom: 30px;
