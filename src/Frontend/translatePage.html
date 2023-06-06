@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="translatePage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Translate Page</title>
+  </head>
+
+  <body>
+    <section>
+      <input type="checkbox" id="check" />
+      <header>
+        <h2><a href="splashScreen.html" class="logo">NoteLord</a></h2>
+        <div class="navigation">
+          <a href="#">Home</a>
+          <a href="#">Manual</a>
+          <a href="#">Files</a>
+        </div>
+        <label for="check">
+          <i class="fas fa-bars menu-btn"></i>
+          <i class="fas fa-times close-btn"></i>
+        </label>
+      </header>
+      <div class="content">
+        <div class="info">
+          <h2>
+            Translate<br /><span>Create Professional Quality Scores</span>
+          </h2>
+          <p>Start writing your own music.</p>
+          <!--
+            <a href="#" class="info-btn">More info</a>
+          -->
+        </div>
+
+        <div class="hero">
+          <br /><br />
+          <input type="button" value="Translate" class="translate-btn" />
+          <br /><br />
+          <!--<button></button>-->
+
+          <div class="groupy">
+            <div class="text-input">
+              <textarea
+                spellcheck="false"
+                class="from-text"
+                placeholder="Type your text"
+              ></textarea>
+              <textarea
+                spellcheck="false"
+                readonly
+                disabled
+                class="to-text"
+                placeholder="Translation"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    const btn = document.getElementsByTagName("input")[0];
+    btn.addEventListener("click", translateText);
+  </script>
+</html>
