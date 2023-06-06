@@ -317,7 +317,7 @@ function key_measure(line, hope) {
     extractedArray_new = extractedText.split(",");
   }
   var cleffnum = 0;
-  var len = 300;
+  var len = 270;
   var clef = null;
   var keysig = null;
   var timesig = null;
