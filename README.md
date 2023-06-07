@@ -78,5 +78,6 @@ Once you start the app, you can always check the **Manual** Page on the top Navi
 Our app provides secure data saving and retrieving tools such that you will have no concerns regarding losing your valuable work. In addtion to identifying your \command inputs which will generate corresponding music notations, you may also add comments to your command for instant or future references.
 
 <br/> 
+
 You may also generate a pdf of the music sheet translated by your input and save them to your local computer. 
 
