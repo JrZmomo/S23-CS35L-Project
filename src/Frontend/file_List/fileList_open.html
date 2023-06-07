@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>File List</title>
-  <link rel="stylesheet" href="filePage.css">
+  <link rel="stylesheet" href="fileList.css">
 </head>
+
 <body>
   <div class="box">
-    <ul class="directory-list" id="fileList"></ul>
+    <ul class="directory-list" id="fileList">
+      <li class="folder">Your files
+        <ul id="fileListItems">
+          
+        </ul>
+      </li>
+    </ul>
   </div>
 
   <script>
     fetch('http://localhost:3000/files') 
       .then(response => response.json())
       .then(data => {
-        const fileList = document.getElementById('fileList'); 
+        const fileList = document.getElementById('fileListItems'); 
         if (data.length === 0) {
           const listItem = document.createElement('li'); 
           listItem.className = 'file'; 
