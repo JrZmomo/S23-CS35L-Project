@@ -8,7 +8,8 @@
 //btn : translate button , will call translateText()
 const textarea = document.getElementById("InputText");
 
-const btn = document.getElementsByTagName('input')[0];
+const btn = document.getElementById('translateBtn');
+//const btn = document.getElementsByTagName('input')[0];
 btn.addEventListener('click', translateText);
 
 
