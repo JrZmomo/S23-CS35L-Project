@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="translatePage.css" /> -->
+    <link rel="stylesheet" href="translate.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Translate Page</title>
+    <link rel="stylesheet" href="TopNavBar.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <link rel="stylesheet" href="translatePage.css" /> -->
-  <link rel="stylesheet" href="translate.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <title>Translate Page</title>
-  <link rel="stylesheet" href="TopNavBar.css">
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<!-- <style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@4/build/cjs/vexflow.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <!-- <style>
    body {
     background: #eee;
     font-family: 'Open Sans', sans-serif;
@@ -24,78 +26,80 @@
   } 
 </style> -->
 
-<body>
-  <section>
-    <input type="checkbox" id="check" />
-    <header>
-      <h2><a href="splashScreen.html" class="logo">NoteLord</a></h2>
-      <div class="navigation">
-        <a href="landPage.html">Home</a>
-        <a href="User_Manual.html">Manual</a>
-        <a href="filePage.html">Files</a>
-      </div>
-      <label for="check">
-        <i class="fas fa-bars menu-btn"></i>
-        <i class="fas fa-times close-btn"></i>
-      </label>
-    </header>
+  <body>
+    <section>
+      <input type="checkbox" id="check" />
+      <header>
+        <h2><a href="splashScreen.html" class="logo">NoteLord</a></h2>
+        <div class="navigation">
+          <a href="landPage.html">Home</a>
+          <a href="User_Manual.html">Manual</a>
+          <a href="filePage.html">Files</a>
+        </div>
+        <label for="check">
+          <i class="fas fa-bars menu-btn"></i>
+          <i class="fas fa-times close-btn"></i>
+        </label>
+      </header>
 
+      <div class="content">
+        <div class="info">
+          <h2>
+            Translate<br /><span>Create Professional Quality Scores</span>
+          </h2>
+          <p>Start writing your own music.</p>
+        </div>
+        <br /><br />
+        <input
+          type="button"
+          value="Translate"
+          class="translate-btn"
+          id="translateBtn"
+        />
+        <input
+          type="button"
+          value="Generate PDF"
+          class="genPDF-btn"
+          id="generatePDF"
+        />
+        <br /><br />
+        <div class="hero">
+          <div class="groupy">
+            <div class="input-container">
+              <!--
+<label for="inputText">Enter text:</label>
+              <br />
+              -->
+              <textarea
+                id="InputText"
+                rows="20"
+                cols="100"
+                spellcheck="false"
+                class="from-text"
+                placeholder="Type your text"
+              ></textarea>
+            </div>
 
-    <div class="content">
-      <div class="info">
-        <h2>
-          Translate<br /><span>Create Professional Quality Scores</span>
-        </h2>
-        <p>Start writing your own music.</p>
-      </div>
-      <br /><br />
-      <input type="button" value="Translate" class="translate-btn" id = "translateBtn"/>
-      <input type="button" value="Generate PDF" class = "genPDF-btn" id="generatePDF"/>
-      <br /><br />
-      <div class="hero">
-        <div class="groupy">
+            <script src="sheet.js"></script>
+            <script src="translate.js"></script>
 
-          <div class="input-container">
-            <label for="inputText">Enter text:</label>
-            <br>
-            <textarea 
-              id="InputText" 
-              rows="20" 
-              cols="100" 
-              spellcheck="false" 
-              class="from-text"
-              placeholder="Type your text"></textarea>
+            <div class="output-container">
+              <!--<label for="outputText">Translated text:</label>
+            <br>-->
+              <canvas id="my-canvas" width="850" height="4000"></canvas>
+            </div>
           </div>
-
-          <script src="sheet.js"></script>
-          <script src="translate.js"></script>
-
-          <div class="output-container">
-            <label for="outputText">Translated text:</label>
-            <br>
-            <canvas id="my-canvas" width="850" height="4000"></canvas>
-
-          </div>
-
         </div>
       </div>
-    </div>
-  </section>
-
-
-
-
-
-  <footer>
-    <hr>
-    <small>&copy; 1B, 2023</small>
-  </footer>
-
-
-</body>
-
+    </section>
+    <!--
+<footer>
+      <hr />
+      <small>&copy; 1B, 2023</small>
+    </footer>
+-->
+  </body>
 </html>
-
 
 <!-- \clefnum{2}
 \measure{cleffnum=0,clef=treble,keysig=D,timesig=4/4,\note{6,qh},\note{5,qh},\note{6,qh},\note{5,qh},\note{6,qh},\note{3,qh},\note{6,qh},\note{2,qh}}
