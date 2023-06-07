@@ -22,9 +22,9 @@
   <section>
     <input type="checkbox" id="check">
     <header>
-      <h2><a href="splashScreen.html" class="logo">NoteLord</a></h2>
+      <h2>NOTELORD</h2>
         <div class="navigation">
-          <a href="landPage.html">Home</a>
+          <a href="splashScreen.html">Home</a>
           <a href="User_Manual.html">Manual</a>
           <a href="translate.html">Translate</a>
         </div>
@@ -64,7 +64,7 @@
     function openFileListWindow() {
       const popupUrl = 'file_List/fileList_open.html';
       const popupWidth = 536;
-      const popupHeight = 174.797;
+      const popupHeight = 204;
       const left = (window.innerWidth - popupWidth) / 2;
       const top = (window.innerHeight - popupHeight) / 2;
       const popupOptions = `width=${popupWidth},height=${popupHeight},left=${left},top=${top},resizable,scrollbars=yes`;
@@ -80,13 +80,13 @@
     function deleteFileListWindow() {
       const popupUrl = 'file_List/fileList_delete.html';
       const popupWidth = 536;
-      const popupHeight = 176.797;
+      const popupHeight = 204;
       const left = (window.innerWidth - popupWidth) / 2;
       const top = (window.innerHeight - popupHeight) / 2;
       const popupOptions = `width=${popupWidth},height=${popupHeight},left=${left},top=${top},resizable,scrollbars=yes`;
       window.open(popupUrl, '_blank', popupOptions);
     }
-    // Add event listener to the "Open" button
+    // Add event listener to the "Delete" button
       const deleteBtn = document.querySelector('.info-btn.delete');
       deleteBtn.addEventListener('click', deleteFileListWindow);
   </script>
