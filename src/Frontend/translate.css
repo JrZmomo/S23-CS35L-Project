@@ -121,7 +121,7 @@ label {
 
 .hero {
     position: relative;
-    width: 100%;
+    width: 200%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -178,46 +178,53 @@ i {
     transform: scale(0.9);
 }
 
+.content{
+    width: 100%;
+}
+
 .groupy {
     border: 2px solid #080808;
     background: #e6e6fa;
-    height: 80%;
+    height: 40%;
     display: flex;
+    width: 100%;
+    position: relative;
+    flex-direction: row;
 
-    .input-container,
+    .input-container{
+        flex: 0.35;
+    }
     .output-container {
-        flex: 1;
+        flex: 0.65;
     }
 }
 
+.groupy::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 35%;
+    border-left: 2px solid #080808;
+   }
 
 
-.groupy {
-    display: flex;
-}
 
 .input-container .from-text {
     border-left: 0px solid #080808;
     background: #e6e6fa;
-    width: 30%;
-    height: 349px;
-}
-
-.input-container .to-text {
-    border-left: 2px solid #080808;
-    background: #e6e6fa;
-    width: 50%;
-    height: 349px;
+    width: 100%;
+    height: 400px;
 }
 
 .input-container textarea {
-    resize: both;
-    height: 100px;
+    resize: none;
+    height: auto;
     width: 100%;
     background: none;
     border: none;
     font-size: 18px;
-    padding: 10px 15px;
+    /* padding: 10px 15px; */
 }
 
 @media (max-width: 960px) {
