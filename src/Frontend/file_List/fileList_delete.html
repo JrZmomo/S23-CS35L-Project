@@ -6,6 +6,7 @@
 
 <body>
   <div class="box">
+    <input type="search" id="searchBar" placeholder="Search for a Score to Delete">
     <ul class="directory-list" id="fileList">
       <li class="folder">Your files
         <ul id="fileListItems">
@@ -54,6 +55,19 @@
             fileList.appendChild(listItem);
           });
         }
+        const searchBar = document.querySelector('#searchBar');
+
+        searchBar.addEventListener('input', (e) => {
+          const searchString = e.target.value.toLowerCase();
+          const files = fileList.querySelectorAll('li');
+          files.forEach(file => {
+            if (file.textContent.toLowerCase().includes(searchString)) {
+              file.style.display = 'list-item';
+            } else {
+              file.style.display = 'none';
+            }
+          });
+        });
       })
       .catch(error => {
         console.error('Error retrieving file list:', error);
