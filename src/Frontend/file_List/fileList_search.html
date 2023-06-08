@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="fileList.css">
+</head>
+
+<body>
+    <!-- <input type="search" id="searchBar" placeholder="Search for a file..."> -->
+
+    <!-- <ul id="fileList">
+        <li>file1.txt</li>
+        <li>file2.docx</li>
+        <li>file3.pdf</li>
+        <li>file4.jpg</li>
+    </ul> -->
+
+    <!-- <script>
+        const searchBar = document.querySelector('#searchBar');
+        const fileList = document.querySelector('#fileList');
+
+        searchBar.addEventListener('input', (e) => {
+            const searchString = e.target.value.toLowerCase();
+            const files = fileList.querySelectorAll('li');
+            files.forEach(file => {
+                if (file.textContent.toLowerCase().includes(searchString)) {
+                    file.style.display = 'list-item';
+                } else {
+                    file.style.display = 'none';
+                }
+            });
+        });
+    </script> -->
+
+
+    <div class="box">
+        <input type="search" id="searchBar" placeholder="Search for a file...">
+        <ul class="directory-list" id="fileList">
+            <li class="folder">Your files
+                <ul id="fileListItems">
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        fetch('http://localhost:3000/files')
+            .then(response => response.json())
+            .then(data => {
+                const fileList = document.getElementById('fileListItems');
+                if (data.length === 0) {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'file';
+                    listItem.textContent = 'No existing file in the database. Please create a new one.';
+                    fileList.appendChild(listItem);
+                } else {
+                    data.forEach(file => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'file';
+
+                        const link = document.createElement('a');
+                        link.textContent = file.filename;
+                        link.href = `../translate.html?fileName=${encodeURIComponent(file.filename)}`;
+
+                        link.addEventListener('click', (event) => {
+                            event.preventDefault(); // Prevents the default link navigation behavior
+                            window.close(); // Closes the pop-up window
+                            window.opener.location.href = link.href; // Opens translate.html in the original window
+                        });
+
+                        listItem.appendChild(link);
+                        fileList.appendChild(listItem);
+                    });
+                }
+                const searchBar = document.querySelector('#searchBar');
+
+                searchBar.addEventListener('input', (e) => {
+                    const searchString = e.target.value.toLowerCase();
+                    const files = fileList.querySelectorAll('li');
+                    files.forEach(file => {
+                        if (file.textContent.toLowerCase().includes(searchString)) {
+                            file.style.display = 'list-item';
+                        } else {
+                            file.style.display = 'none';
+                        }
+                    });
+                });
+            })
+            .catch(error => {
+                console.error('Error retrieving file list:', error);
+            });
+
+
+
+    </script>
+</body>
+
+</html>
