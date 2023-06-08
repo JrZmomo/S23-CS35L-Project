@@ -4,7 +4,9 @@
   "description": "",
   "main": "Sheet.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "start": "open ../Frontend/splashScreen.html",
+    "test": "open ../Frontend/filePage.html"
   },
   "author": "",
   "license": "ISC",

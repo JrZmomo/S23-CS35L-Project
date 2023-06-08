@@ -68,7 +68,13 @@ npm run devStart
 
 After you have activated the server, you are good to start using the app.
 
-Please go the src/Frontend folder, and open the **splashScreen.html**.
+Please open a split terminal window and type:
+<pre><code>
+npm start. 
+</code></pre>
+The application will be initialized for your use. 
+
+Or you can go the src/Frontend folder, and open the **splashScreen.html**.
 
 <br/>
 

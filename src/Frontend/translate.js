@@ -32,7 +32,6 @@ window.addEventListener('load', () => {
 
 let currentFileName = fileName;
 
-
 function translateText() {
 
   //clear canvas
