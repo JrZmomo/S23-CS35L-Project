@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" href="fileList.css">
 </head>
 
 <body>
   <div class="box">
+    <input type="search" id="searchBar" placeholder="Search for a Score...">
     <ul class="directory-list" id="fileList">
       <li class="folder">Your files
         <ul id="fileListItems">
-          
+
         </ul>
       </li>
     </ul>
   </div>
 
   <script>
-    fetch('http://localhost:3000/files') 
+    fetch('http://localhost:3000/files')
       .then(response => response.json())
       .then(data => {
-        const fileList = document.getElementById('fileListItems'); 
+        const fileList = document.getElementById('fileListItems');
         if (data.length === 0) {
-          const listItem = document.createElement('li'); 
-          listItem.className = 'file'; 
+          const listItem = document.createElement('li');
+          listItem.className = 'file';
           listItem.textContent = 'No existing file in the database. Please create a new one.';
           fileList.appendChild(listItem);
         } else {
           data.forEach(file => {
-            const listItem = document.createElement('li'); 
-            listItem.className = 'file'; 
-            
+            const listItem = document.createElement('li');
+            listItem.className = 'file';
+
             const link = document.createElement('a');
             link.textContent = file.filename;
             link.href = `../translate.html?fileName=${encodeURIComponent(file.filename)}`;
@@ -44,10 +46,25 @@
             fileList.appendChild(listItem);
           });
         }
+
+        const searchBar = document.querySelector('#searchBar');
+
+        searchBar.addEventListener('input', (e) => {
+          const searchString = e.target.value.toLowerCase();
+          const files = fileList.querySelectorAll('li');
+          files.forEach(file => {
+            if (file.textContent.toLowerCase().includes(searchString)) {
+              file.style.display = 'list-item';
+            } else {
+              file.style.display = 'none';
+            }
+          });
+        });
       })
       .catch(error => {
         console.error('Error retrieving file list:', error);
       });
   </script>
 </body>
+
 </html>
