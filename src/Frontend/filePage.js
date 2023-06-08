@@ -1,27 +1,31 @@
-/*
-    // get all folders in our .directory-list
-	var allFolders = $(".directory-list li > ul");
-	allFolders.each(function() {
-
-	  // add the folder class to the parent <li>
-	  var folderAndName = $(this).parent();
-	  folderAndName.addClass("folder");
-
-	  // backup this inner <ul>
-	  var backupOfThisFolder = $(this);
-	  // then delete it
-	  $(this).remove();
-	  // add an <a> tag to whats left ie. the folder name
-	  folderAndName.wrapInner("<a href='#' />");
-	  // then put the inner <ul> back
-	  folderAndName.append(backupOfThisFolder);
-
-	  // now add a slideToggle to the <a> we just added
-	  folderAndName.find("a").click(function(e) {
-	    $(this).siblings("ul").slideToggle("slow");
-	    e.preventDefault();
-	  });
-
-	});
-*/  
-
+function searchFiles() {
+	const file_names = [];
+	const Search_filename = window.prompt("Enter the complete name of the file you want to open");
+  
+	fetch('http://localhost:3000/files')
+	  .then(response => response.json())
+	  .then(data => {
+		data.forEach(file => {
+		  file_names.push(file.filename);
+		});
+  
+		if (file_names.includes(Search_filename)) {
+		  window.location.href = './translate.html?fileName=' + Search_filename;
+		} else {
+		  while (true) {
+			const input = window.prompt("File not found. Please enter a valid file name.");
+			if (file_names.includes(input)) {
+			  window.location.href = './translate.html?fileName=' + input;
+			  break;
+			} else {
+			  continue;
+			}
+		  }
+		}
+	  })
+	  .catch(error => console.error(error));
+  }
+  
+  const searchBtn = document.querySelector('.info-btn.search');
+  searchBtn.addEventListener('click', searchFiles);
+  
