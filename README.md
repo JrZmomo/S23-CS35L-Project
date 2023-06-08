@@ -70,7 +70,7 @@ After you have activated the server, you are good to start using the app.
 
 Please open a split terminal window and type:
 <pre><code>
-npm start. 
+npm start
 </code></pre>
 The application will be initialized for your use. 
 
